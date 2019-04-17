@@ -10,13 +10,14 @@
 class LinearProgram {
 public:
     LinearProgram(std::string input_file);
-    LinearProgram(unsigned int cols) : cols(cols) { };
+    LinearProgram(unsigned int cols) : cols(cols) { }
     unsigned int getRowCount();
     unsigned int getColCount();
     double getMatValue(unsigned int row, unsigned int col);
     double getObjectiveValue(unsigned int index);
     double getConstraint(unsigned int index);
     void addRow(std::vector<double>& rowVals, double constraint);
+    std::vector<double>& getRow(unsigned int index);
 
 private:
     unsigned int rows = 0;

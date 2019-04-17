@@ -7,7 +7,7 @@ SRC_FILES=$(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES=$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o,$(SRC_FILES))
 
 CC=g++
-CFLAGS=-std=c++11 -O3 -I $(INCLUDE_DIR)
+CFLAGS=-std=c++11 -O3 -I $(INCLUDE_DIR) -g
 
 .PHONY: default clean
 

@@ -77,3 +77,11 @@ void LinearProgram::addRow(std::vector<double>& rowVals, double constraint) {
     constraints.push_back(constraint);
     rows++;
 }
+
+std::vector<double>& LinearProgram::getRow(unsigned int index) {
+    if (index >= rows) {
+        throw std::invalid_argument("Index out of bounds");
+    }
+
+    return matrix[index];
+}
