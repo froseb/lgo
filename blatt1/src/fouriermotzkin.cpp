@@ -110,7 +110,20 @@ FourierMotzkinResult fourierMotzkin(LinearProgram& lp) {
 
         return FourierMotzkinResult(true, certificate);
     } else {
-        std::vector<double> certificate;
+        std::vector<double> certificate(lp.getRowCount(), 0);
+
+        // Copy scalars for rows that have been copied
+        for (unsigned int i=0; i<eq0.size(); i++) {
+            certificate[eq0[i]] += res.certificate[i];
+        }
+
+        for (unsigned int i=0; i<lt0.size(); i++) {
+            for (unsigned int j=0; j<gt0.size(); j++) {
+                certificate[lt0[i]] -= res.certificate[i*gt0.size() + j + eq0.size()] / lp.getMatValue(lt0[i], 0);
+                certificate[gt0[j]] += res.certificate[i*gt0.size() + j + eq0.size()] / lp.getMatValue(gt0[j], 0);
+            }
+        }
+
         return FourierMotzkinResult(false, certificate);
     }
 }

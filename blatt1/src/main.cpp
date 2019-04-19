@@ -44,6 +44,11 @@ int main(int argc, char** argv) {
             std::cout << d << " ";
         }
         std::cout << std::endl;
+    } else {
+        std::cout << "empty " << std::endl;
+        for (double d : res.certificate) {
+            std::cout << d << " ";
+        }
     }
 
     return 0;
