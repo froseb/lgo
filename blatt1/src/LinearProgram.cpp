@@ -9,6 +9,10 @@
 LinearProgram::LinearProgram(std::string input_file) {
     std::ifstream file(input_file);
 
+    if (!file.good()) {
+        throw std::runtime_error("Could not open file");
+    }
+
     file >> rows;
     file >> cols;
 

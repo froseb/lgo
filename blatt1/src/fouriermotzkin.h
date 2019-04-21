@@ -3,6 +3,7 @@
 
 #include "LinearProgram.h"
 
+double scalarMult(std::vector<double> a, std::vector<double> b);
 // Contains the result of the Fourier Motzkin elimination
 class FourierMotzkinResult {
 public:
