@@ -27,7 +27,7 @@ ResidualEdge::ResidualEdge(Graph& g, edge_t e, node_t node, bool tail) : id(e), 
     }
 }
 
-// Creates a residual edge from the edge that has tail as tail
+// Creates a residual edge from the edge into the same direction if foward == true or the opposite direction otherwise
 ResidualEdge::ResidualEdge(Graph& g, edge_t e, bool forward) : id(e), cap(g.edges[e].cap), cost(g.edges[e].cost), forward(forward) {
     if (forward) {
         v = g.edges[e].v;

@@ -25,6 +25,7 @@ public:
     };
 
     Graph(std::string filename);
+    void export_min_cost_flow(std::vector<flow_t>& flow, std::ostream& out);
 
     node_t node_count = 0;
     edge_t edge_count = 0;

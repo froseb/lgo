@@ -30,11 +30,19 @@ int main(int argc, char** argv) {
     Graph g(filename);
 
     std::vector<flow_t> flow = network_simplex(g);
-    
-    cost_t value = 0;
-    for (edge_t i=0; i<g.edge_count; i++) {
-      value += g.edges[i].cost * flow[i];
-    }
 
-    std::cout << value << std::endl;
+    std::fstream outfile;
+    std::ostream *out;
+    if (outputfileSpecified) {
+      outfile = std::fstream(outputfile, std::ios_base::out);
+
+      if (!outfile.is_open()) {
+        throw(std::runtime_error("Output file could not be opened."));
+      }
+
+      out = &outfile;
+    } else {
+      out = &std::cout;
+    }
+    g.export_min_cost_flow(flow, *out);
 }

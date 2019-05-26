@@ -155,20 +155,7 @@ void augment_flow_and_update_previous_edges(ResidualEdge& e, flow_t value, Resid
 // Returns a flow vector that solves the min cost flow problem on the given graph
 std::vector<flow_t> network_simplex(Graph& g) {
     simplex_vars vars(g);
-    /*
-    // contains the flow for each edge
-    vars.flow = std::vector<flow_t>(g.edge_count + g.node_count-1, 0);
 
-    // contains previous edges in the tree for each node
-    vars.prev = std::vector<edge_t>(g.node_count+1, 0);
-
-    // potential for each node
-    vars.pot = std::vector<cost_t>(g.node_count+1, 0);
-
-    // distance for each node
-    vars.dist = std::vector<unsigned int>(g.node_count+1, 0);*/
-
-    // add edges for having a strongly feasible start and set initial values
     make_strongly_feasible_instance(g, vars);
     
     ResidualEdge new_edge;
@@ -188,6 +175,14 @@ std::vector<flow_t> network_simplex(Graph& g) {
         }
 
         update_potential_and_distance(g, vars);
+    }
+
+    for (node_t i=0; i<g.node_count; i++) {
+        g.edges.pop_back();
+        if (vars.flow.back() > 0) {
+            throw(std::runtime_error("Did not find feasible solution."));
+        }
+        vars.flow.pop_back();
     }
 
     return vars.flow;
