@@ -12,7 +12,7 @@ public:
     std::vector<flow_t> flow;
     std::vector<edge_t> prev;
     std::list<edge_t> L, U;
-    std::vector<cost_t> pot;
+    std::vector<pot_t> pot;
     std::vector<unsigned int> dist; // distance (numbers of edges on the path from the root to each node)
 };
 

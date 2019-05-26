@@ -169,9 +169,9 @@ std::vector<flow_t> network_simplex(Graph& g) {
 
         // Add the edge that has been removed from the tree to L or U, respectively
         if (last_limiting_edge.forward) {
-            vars.U.push_back(last_limiting_edge.id);
+            vars.U.push_front(last_limiting_edge.id);
         } else {
-            vars.L.push_back(last_limiting_edge.id);
+            vars.L.push_front(last_limiting_edge.id);
         }
 
         update_potential_and_distance(g, vars);

@@ -13,6 +13,7 @@ typedef unsigned int edge_t;
 typedef int flow_t;
 typedef int supply_t;
 typedef int cost_t;
+typedef long long int pot_t;
 
 class Graph {
 public:

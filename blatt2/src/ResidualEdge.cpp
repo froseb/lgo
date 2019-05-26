@@ -56,11 +56,11 @@ void ResidualEdge::push(std::vector<flow_t>& flow, flow_t value) {
     }
 }
 
-cost_t ResidualEdge::potential_cost(std::vector<cost_t>& pot) {
+cost_t ResidualEdge::potential_cost(std::vector<pot_t>& pot) {
     if (forward) { 
-        return cost + pot[v] - pot[w];
+        return (cost_t) (cost + pot[v] - pot[w]);
     } else {
-        return -cost + pot[v] - pot[w];
+        return (cost_t) (-cost + pot[v] - pot[w]);
     }
 }
 
