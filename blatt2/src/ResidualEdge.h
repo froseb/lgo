@@ -11,6 +11,7 @@ public:
     flow_t pushable_flow(std::vector<flow_t>& flow);
     void push(std::vector<flow_t>& flow, flow_t value);
     cost_t potential_cost(std::vector<cost_t>& pot);
+    cost_t residual_cost();
 
     edge_t id;
     node_t v, w;

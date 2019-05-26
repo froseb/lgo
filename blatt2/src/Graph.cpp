@@ -6,13 +6,13 @@ Graph::Graph(std::string filename) {
 
     // Check if file is open
     if (!file.is_open()) {
-        throw(std::runtime_error("File could not we opened"));
+        throw(std::runtime_error("File could not be opened"));
         return;
     }
 
     file >> node_count;
     node_t v, w;
-    cap_t cap;
+    flow_t cap;
     cost_t cost;
 
     // Reserve memory

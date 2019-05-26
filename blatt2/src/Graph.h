@@ -10,7 +10,7 @@
 // Define types for ids and values
 typedef unsigned int node_t;
 typedef unsigned int edge_t;
-typedef unsigned int flow_t;
+typedef int flow_t;
 typedef int supply_t;
 typedef int cost_t;
 
